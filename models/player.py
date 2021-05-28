@@ -19,16 +19,22 @@ class Player:
     __y_cards__ = None
     __r_cards__ = None
     __clean_sheets__ = None
-    __team__ = []
     __id__ = None
 
-    def __init__(self, surname, first_name, squad_number, position, teams, id=None):
+    def __init__(self, surname, first_name, squad_number, position,
+                 teams, goals=None, assists=None, own_goals=None,
+                 yellow_cards=None, red_cards=None, clean_sheets=None,
+                 id=None):
         self.__surname__ = surname
         self.__first_name__ = first_name
         self.__squad_number__ = squad_number
         self.__position__ = position
-        for team in teams:
-            self.__team__.append(team)
+        self.__goals_scored__ = goals
+        self.__assists__ = assists
+        self.__own_goals__ = own_goals
+        self.__y_cards__ = yellow_cards
+        self.__r_cards__ = red_cards
+        self.__clean_sheets__ = clean_sheets
         self.__id__ = id
 
     def get_id(self):
@@ -49,7 +55,7 @@ class Player:
     def get_firstname(self):
         return self.__first_name__
 
-    def set_squad_numer(self, squad_number):
+    def set_squad_number(self, squad_number):
         self.__squad_number__ = squad_number
 
     def get_squad_number(self):

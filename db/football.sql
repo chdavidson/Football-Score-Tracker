@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS players
 DROP TABLE IF EXISTS fixtures
 DROP TABLE IF EXISTS leagues
 DROP TABLE IF EXISTS associations
-DROP TABLE IF EXISTS teams_players
+DROP TABLE IF EXISTS signings
 DROP TABLE IF EXISTS leagues_teams
 
 
@@ -33,10 +33,11 @@ CREATE TABLE teams(
 
 );
 
-CREATE TABLE teams_players(
+CREATE TABLE signings(
     id SERIAL PRIMARY KEY,
     teams_id INT REFERENCES teams(id),
-    players_id INT REFERENCES players(id)
+    players_id INT REFERENCES players(id),
+    signed_on DATE
 );
 
 -- STADIUMS: one to many with teams (i.e. Milan/Inter)
@@ -68,7 +69,7 @@ CREATE TABLE fixtures(
     league_id INT REFERENCES league(id)
 );
 
-CREATE TABLE leagues_teams(
+CREATE TABLE participants(
     id SERIAL PRIMARY KEY,
     league_id INT REFERENCES leagues(id),
     teams_id INT REFERENCES teams(id)
