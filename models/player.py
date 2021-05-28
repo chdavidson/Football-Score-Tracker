@@ -40,9 +40,6 @@ class Player:
     def get_id(self):
         return self.__id__
 
-    def get_team(self):
-        return self.__team__
-
     def set_surname(self, surname):
         self.__surname__ = surname
 

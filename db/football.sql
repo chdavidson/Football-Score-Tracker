@@ -1,11 +1,11 @@
-DROP TABLE IF EXISTS teams
-DROP TABLE IF EXISTS stadiums
-DROP TABLE IF EXISTS players
-DROP TABLE IF EXISTS fixtures
-DROP TABLE IF EXISTS leagues
-DROP TABLE IF EXISTS associations
-DROP TABLE IF EXISTS signings
-DROP TABLE IF EXISTS leagues_teams
+DROP TABLE IF EXISTS signings;
+DROP TABLE IF EXISTS teams;
+DROP TABLE IF EXISTS stadiums;
+DROP TABLE IF EXISTS players;
+DROP TABLE IF EXISTS fixtures;
+DROP TABLE IF EXISTS leagues;
+DROP TABLE IF EXISTS associations;
+DROP TABLE IF EXISTS participants;
 
 
 
@@ -23,6 +23,13 @@ CREATE TABLE players(
     clean_sheets INT
 );
 
+-- STADIUMS: one to many with teams (i.e. Milan/Inter)
+CREATE TABLE stadiums(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    capacity INT
+);
+
 
 --TEAMS: many to many with players (i.e. domestic and international)
 CREATE TABLE teams(
@@ -38,13 +45,6 @@ CREATE TABLE signings(
     teams_id INT REFERENCES teams(id),
     players_id INT REFERENCES players(id),
     signed_on DATE
-);
-
--- STADIUMS: one to many with teams (i.e. Milan/Inter)
-CREATE TABLE stadiums(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    capacity INT
 );
 
 --Associations: one to many with leagues
@@ -66,12 +66,11 @@ CREATE TABLE fixtures(
     id SERIAL PRIMARY KEY,
     home_team VARCHAR(255),
     away_team VARCHAR(255),
-    league_id INT REFERENCES league(id)
+    league_id INT REFERENCES leagues(id)
 );
 
 CREATE TABLE participants(
     id SERIAL PRIMARY KEY,
     league_id INT REFERENCES leagues(id),
     teams_id INT REFERENCES teams(id)
-):
-
+);
