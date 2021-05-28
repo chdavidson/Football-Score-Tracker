@@ -19,6 +19,23 @@ class Player:
     __y_cards__ = None
     __r_cards__ = None
     __clean_sheets__ = None
+    __team__ = []
+    __id__ = None
+
+    def __init__(self, surname, first_name, squad_number, position, teams, id=None):
+        self.__surname__ = surname
+        self.__first_name__ = first_name
+        self.__squad_number__ = squad_number
+        self.__position__ = position
+        for team in teams:
+            self.__team__.append(team)
+        self.__id__ = id
+
+    def get_id(self):
+        return self.__id__
+
+    def get_team(self):
+        return self.__team__
 
     def set_surname(self, surname):
         self.__surname__ = surname

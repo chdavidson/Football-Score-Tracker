@@ -3,11 +3,13 @@ class Team:
     __year_founded__ = None
     __players__ = []
     __stadium__ = []
+    __id__ = None
 
-    def __init__(self, name, year_founded, stadium, players=None):
+    def __init__(self, name, year_founded, stadium, players=None, id=None):
         self.name = name
         self.__year_founded__ = year_founded
         self.__stadium__ = stadium
+        self.__id__ = id
         for player in players:
             self.__players__.append(player)
 

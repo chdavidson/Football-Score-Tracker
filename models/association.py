@@ -1,9 +1,14 @@
 class Football_Association:
     __name__ = None
     __leagues__ = []
+    __id__ = None
 
-    def __init__(self, name):
+    def __init__(self, name, id=None):
         self.__name__ = name
+        self.__id__ = id
+        
+    def get_id(self):
+        return self.__id__
 
     def add_leagues(self, leagues):
         for league in leagues:
