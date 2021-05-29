@@ -3,7 +3,6 @@ class Stadium:
     __name__ = None
     __location__ = None
     __capacity__ = None
-    # __teams__ = []
     __id__ = None
 
     def __init__(self, name, location, capacity, id=None):
@@ -11,8 +10,6 @@ class Stadium:
         self.__location__ = location
         self.__capacity__ = capacity
         self.__id__ = id
-        # for team in teams:
-        #     self.__teams__.append(team)
 
     def get_name(self):
         return self.__name__

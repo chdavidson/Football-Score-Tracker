@@ -20,7 +20,7 @@ class Fixture():
         return [self.__home_team__, self.__away_team__]
 
 
-class Leagues():
+class League():
     __name__ = None
     __teams__ = []
     __fixtures__ = []
@@ -28,17 +28,16 @@ class Leagues():
     __association__ = None
     __id__ = None
 
-    def __init__(self, name, association, teams=None, fixtures=None, id=None):
+    def __init__(self, name, association, id=None):
         self.__name__ = name
         self.__association__ = association
         self.__id__ = id
-        for team in teams:
-            self.__teams__.append(team)
-        for fixture in fixtures:
-            self.__fixtures__.append(fixture)
 
     def get_id(self):
         return self.__id__
+    
+    def set_id(self, id):
+        self.__id__ = id
 
     def get_association(self):
         return self.__association__

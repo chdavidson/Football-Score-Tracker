@@ -15,3 +15,4 @@ def select(id):
     result = run_sql(sql, [id])[0]
     return Stadium(result['name'], result['location'],
                    result['capacity'], result['id'])
+

@@ -8,13 +8,15 @@ DROP TABLE IF EXISTS associations;
 DROP TABLE IF EXISTS participants;
 
 
+CREATE TYPE pos AS ENUM ('GK', 'DEF', 'MID', 'FWD');
 
 CREATE TABLE players(
     id SERIAL PRIMARY KEY,
     surname VARCHAR(255),
     first_name VARCHAR(255),
     squad_number INT, 
-    position INT, -- RELATES ENUM VALUE
+    --position INT, -- RELATES ENUM VALUE
+    position pos,
     goals INT,
     assists INT,
     own_goals INT,
@@ -42,8 +44,8 @@ CREATE TABLE teams(
 
 CREATE TABLE signings(
     id SERIAL PRIMARY KEY,
-    teams_id INT REFERENCES teams(id),
-    players_id INT REFERENCES players(id),
+    team_id INT REFERENCES teams(id),
+    player_id INT REFERENCES players(id),
     signed_on DATE
 );
 

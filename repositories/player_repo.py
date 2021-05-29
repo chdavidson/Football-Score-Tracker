@@ -44,8 +44,8 @@ def select(id):
 
 def get_teams(player):
     teams = []
-    sql = 'SELECT teams.* FROM teams INNER JOIN signings ON signings.teams_id = team.id WHERE player_id = %s'
-    results = run_sql(sql, player.id)
+    sql = 'SELECT teams.* FROM teams INNER JOIN signings ON signings.team_id = teams.id WHERE signings.player_id = %s'
+    results = run_sql(sql, [player.get_id()])
     for result in results:
         teams.append(Team(result['name'], result['year_founded'],
                           stadium_repo.select(result['stadium_id']), result['id']))
@@ -53,10 +53,11 @@ def get_teams(player):
 
 
 def update(player):
-    sql = 'UPDATE players SET (surname, first_name, squad_number, postion, goals, assists, own_goals, yellow_cards, red_cards, clean_sheets) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s'
+    sql = 'UPDATE players SET (surname, first_name, squad_number, position, goals, assists, own_goals, yellow_cards, red_cards, clean_sheets) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s'
     values = [player.get_surname(), player.get_firstname(),
               player.get_squad_number(), player.get_position(),
               player.get_goals_scored(), player.get_assists(),
-              player.get_yellow_cards(), player.get_red_cards(),
-              player.get_clean_sheets(), player.get_id()]
+              player.get_own_goals(), player.get_yellow_cards(),
+              player.get_red_cards(), player.get_clean_sheets(),
+              player.get_id()]
     run_sql(sql, values)

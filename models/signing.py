@@ -15,3 +15,18 @@ class Signing:
         if signed_on is None:
             self.__date__ = date.today()  # YYYY-MM-DD
         self.__id__ = id
+        
+    def get_player(self):
+        return self.__player__
+
+    def get_team(self):
+        return self.__team__
+
+    def get_date(self):
+        return self.__date__
+    
+    def get_id(self):
+        return self.__id__
+
+    def set_id(self, id):
+        self.__id__ = id

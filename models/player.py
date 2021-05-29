@@ -2,10 +2,10 @@ from enum import Enum, auto
 
 
 class Position(Enum):
-    GK = auto()
-    DEF = auto()
-    MID = auto()
-    FWD = auto()
+    GK = 1
+    DEF = 2
+    MID = 3
+    FWD = 4
 
 
 class Player:
@@ -22,7 +22,7 @@ class Player:
     __id__ = None
 
     def __init__(self, surname, first_name, squad_number, position,
-                 teams, goals=0, assists=0, own_goals=0,
+                 goals=0, assists=0, own_goals=0,
                  yellow_cards=0, red_cards=0, clean_sheets=0,
                  id=None):
         self.__surname__ = surname
@@ -62,10 +62,11 @@ class Player:
         return self.__squad_number__
 
     def set_postion(self, position):
-        try:
-            self.__position__ = Position(position)
-        except Exception as e:
-            print(e)
+        # try:
+        #     self.__position__ = str(Position(position).value)
+        # except Exception as e:
+        #     print("error from player.py "+e)
+        self.__position__ = position
 
     def get_position(self):
         return self.__position__
@@ -105,8 +106,3 @@ class Player:
 
     def get_clean_sheets(self):
         return self.__clean_sheets__
-
-
-# player_1 = Player()
-# player_1.set_postion(3)
-# print(player_1.get_position())
