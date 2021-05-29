@@ -1,3 +1,5 @@
+from models.season import Season
+from models.participant import Participant
 import pdb
 from models import player
 from models import stadium
@@ -7,6 +9,7 @@ from models.team import Team
 from models.league import League
 from models.stadium import Stadium
 from models.signing import Signing
+from models.fixture import Fixture
 from models.association import Football_Association
 import repositories.signing_repo as signing_repo
 import repositories.player_repo as player_repo
@@ -14,6 +17,9 @@ import repositories.team_repo as team_repo
 import repositories.stadium_repo as stadium_repo
 import repositories.association_repo as association_repo
 import repositories.league_repo as league_repo
+import repositories.participant_repo as participant_repo
+import repositories.season_repo as season_repo
+import repositories.fixture_repo as fixture_repo
 
 sfpl = Football_Association('Scottish Professional Football League')
 association_repo.save(sfpl)
@@ -74,3 +80,19 @@ inter_milan = Team('Internazionale', 1908, san_siro)
 team_repo.save(inter_milan)
 ac_milan = Team('Associazione Calcio Milan', 1899, san_siro)
 team_repo.save(ac_milan)
+
+ochilview = Stadium("Ochilview Park", "Falkirk", 3746)
+stadium_repo.save(ochilview)
+stenhousemuir = Team("Stenhousemuir F.C.", 1884, ochilview)
+team_repo.save(stenhousemuir)
+
+sa_sl2 = Participant(scot_league_two, stirling_albion)
+participant_repo.save(sa_sl2)
+sm_sl2 = Participant(scot_league_two, stenhousemuir)
+participant_repo.save(sm_sl2)
+
+sl2_2021 = Season('2021/22', scot_league_two)
+season_repo.save(sl2_2021)
+
+sa_v_sm = Fixture(stirling_albion, stenhousemuir, sl2_2021)
+fixture_repo.save(sa_v_sm)

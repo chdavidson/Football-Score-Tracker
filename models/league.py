@@ -1,25 +1,3 @@
-class Fixture():
-    __home_team__ = None
-    __away_team__ = None
-    __id__ = None
-    __league__ = None
-
-    def __init__(self, home_team, away_team, league, id=None):
-        self.__home_team__ = home_team
-        self.__away_team__ = away_team
-        self.__id__ = id
-        self.__league__ = league
-
-    def get_id(self):
-        return self.__id__
-    
-    def get_league(self):
-        return self.__league__
-
-    def get_fixture(self):
-        return [self.__home_team__, self.__away_team__]
-
-
 class League():
     __name__ = None
     __teams__ = []

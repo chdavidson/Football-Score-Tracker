@@ -1,7 +1,5 @@
 from db.run_sql import run_sql
 from models.signing import Signing
-from models.player import Player
-from models.team import Team
 import repositories.player_repo as player_repo
 import repositories.team_repo as team_repo
 

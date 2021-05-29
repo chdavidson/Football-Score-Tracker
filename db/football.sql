@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS teams;
 DROP TABLE IF EXISTS stadiums;
 DROP TABLE IF EXISTS players;
 DROP TABLE IF EXISTS fixtures;
+DROP TABLE IF EXISTS seasons;
 DROP TABLE IF EXISTS leagues;
 DROP TABLE IF EXISTS associations;
 DROP TABLE IF EXISTS participants;
@@ -56,23 +57,31 @@ CREATE TABLE associations(
 );
 
 --Leagues: many to many with teams (i.e. domestic and european etc.)
---Leagues: one to many with fixtures
+--Leagues: one to many with seasons
 CREATE TABLE leagues(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     association_id INT REFERENCES associations(id)
 );
 
+--Seasosn: one to many with fixtures
+CREATE TABLE seasons(
+    id SERIAL PRIMARY KEY,
+    year VARCHAR(255),
+    league_id INT REFERENCES leagues(id)
+);
+
+
 
 CREATE TABLE fixtures(
     id SERIAL PRIMARY KEY,
-    home_team VARCHAR(255),
-    away_team VARCHAR(255),
-    league_id INT REFERENCES leagues(id)
+    home_id INT REFERENCES teams(id),
+    away_id INT REFERENCES teams(id),
+    season_id INT REFERENCES seasons(id)
 );
 
 CREATE TABLE participants(
     id SERIAL PRIMARY KEY,
     league_id INT REFERENCES leagues(id),
-    teams_id INT REFERENCES teams(id)
+    team_id INT REFERENCES teams(id)
 );
