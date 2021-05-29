@@ -22,8 +22,8 @@ class Player:
     __id__ = None
 
     def __init__(self, surname, first_name, squad_number, position,
-                 teams, goals=None, assists=None, own_goals=None,
-                 yellow_cards=None, red_cards=None, clean_sheets=None,
+                 teams, goals=0, assists=0, own_goals=0,
+                 yellow_cards=0, red_cards=0, clean_sheets=0,
                  id=None):
         self.__surname__ = surname
         self.__first_name__ = first_name
@@ -39,6 +39,9 @@ class Player:
 
     def get_id(self):
         return self.__id__
+
+    def set_id(self, id):
+        self.__id__ = id
 
     def set_surname(self, surname):
         self.__surname__ = surname

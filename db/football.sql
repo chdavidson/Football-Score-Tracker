@@ -27,6 +27,7 @@ CREATE TABLE players(
 CREATE TABLE stadiums(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
+    location VARCHAR(255),
     capacity INT
 );
 
@@ -37,7 +38,6 @@ CREATE TABLE teams(
     name VARCHAR(255),
     year_founded INT,
     stadium_id INT REFERENCES stadiums(id)
-
 );
 
 CREATE TABLE signings(
