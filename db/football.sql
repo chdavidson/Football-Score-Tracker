@@ -77,7 +77,9 @@ CREATE TABLE fixtures(
     id SERIAL PRIMARY KEY,
     home_id INT REFERENCES teams(id),
     away_id INT REFERENCES teams(id),
-    season_id INT REFERENCES seasons(id)
+    season_id INT REFERENCES seasons(id),
+    home_score INT,
+    away_score INT
 );
 
 CREATE TABLE participants(

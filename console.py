@@ -1,3 +1,4 @@
+from os import PathLike
 from models.season import Season
 from models.participant import Participant
 import pdb
@@ -96,3 +97,22 @@ season_repo.save(sl2_2021)
 
 sa_v_sm = Fixture(stirling_albion, stenhousemuir, sl2_2021)
 fixture_repo.save(sa_v_sm)
+
+sm_v_sa = Fixture(stenhousemuir, stirling_albion, sl2_2021)
+sm_v_sa.set_score(0, 3)
+fixture_repo.save(sm_v_sa)
+
+hampden = Stadium('Hampden Park', 'Glasgow', 51886)
+stadium_repo.save(hampden)
+queens_park = Team("Queen's Park F.C.", 1867, hampden)
+team_repo.save(queens_park)
+qp_sl2 = Participant(scot_league_two, queens_park)
+participant_repo.save(qp_sl2)
+
+print(fixture_repo.select(1).home_score, fixture_repo.select(1).away_score)
+print(fixture_repo.select(2).home_score, fixture_repo.select(2).away_score)
+
+
+fixture_list = season_repo.get_all_fixtures(sl2_2021)
+for fix in fixture_list:
+    print(fix.home_team.get_name(), fix.home_score, fix.away_team.get_name(), fix.away_score)

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{league.get_name()}}</h2>
+    <div class='season_container'>
+        <table class='table_of_seasons'>
+            <tr>
+                <th>Season:</th>
+            </tr>
+            {% for season in seasons %}
+            <tr>
+                <th><a href='/admin/fixtures/{{league.get_id()}}/{{season.get_id()}}'>{{season.get_year()}}</a></th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>    
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{league.get_name()}} : {{season.get_year()}}</h2>
+    <div class='fixture_container'>
+        <table class='table_of_fixtures'>
+            <tr>
+                <th>Home</th>
+                <th></th>
+                <th></th>
+                <th>Away</th>
+            </tr>
+            {% for fixture in fixtures %}
+            <tr>
+                <td>{{fixture.home_team.get_name()}}</td>
+                {% if fixture.home_score != None %}
+                    <td>{{fixture.home_score}}</td>
+                {% else %}
+                    <td>TBC</td>
+                {% endif %}
+                {% if fixture.away_score != None %}
+                    <td>{{ fixture.away_score }}</td>
+                {% else %}
+                    <td>TBC</td>
+                {% endif %}
+                <td>{{fixture.away_team.get_name()}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class='new_fixture_button'>
+        <a href='/admin/fixtures/{{league.get_id()}}/{{season.get_id()}}/new'>
+            <input type='button' value='Add new'>
+        </a>
+    </div>
+{% endblock content %}

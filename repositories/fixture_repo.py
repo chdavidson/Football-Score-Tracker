@@ -6,18 +6,22 @@ import repositories.season_repo as season_repo
 
 
 def save(fixture):
-    sql = 'INSERT INTO fixtures (home_id, away_id, season_id) VALUES (%s, %s, %s) RETURNING id'
-    values = [fixture.get_fixture()[0].get_id(),
-              fixture.get_fixture()[1].get_id(),
-              fixture.get_season().get_id()]
+    sql = 'INSERT INTO fixtures (home_id, away_id, season_id, home_score, away_score) VALUES (%s, %s, %s, %s, %s) RETURNING id'
+    values = [fixture.home_team.get_id(), fixture.away_team.get_id(),
+              fixture.season.get_id(), fixture.home_score, fixture.away_score]
     result = run_sql(sql, values)
-    fixture.set_id(result[0]['id'])
+    fixture.id = result[0]['id']
 
 
 def select(id):
     sql = 'SELECT * FROM fixtures WHERE id = %s'
-    result = run_sql(sql, [id])
-    return Fixture(team_repo.select(result['home_id']),
-                   team_repo.select(result['away_id']),
-                   season_repo.select(result['season_id']))
+    result = run_sql(sql, [id])[0]
+    fixture = Fixture(team_repo.select(result['home_id']),
+                      team_repo.select(result['away_id']),
+                      season_repo.select(result['season_id']))
+    fixture.set_score(result['home_score'], result['away_score'])
+    return fixture
 
+
+# def select_all():
+#     sql = 'SELECT * FROM fixtures'
