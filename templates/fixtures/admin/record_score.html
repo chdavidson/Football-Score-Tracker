@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Record Score:</h2>
+<div class='record_score'>
+<form action="/admin/fixtures/{{league_id}}/{{season_id}}/{{fixture_id}}" method='POST'>
+    <label for="home_team_score">{{home_team.get_name()}}</label>
+     <input type='int' id='home_team_score' name='home_team_score'>
+
+
+    <p> versus </p>
+
+    <label for="away_team_score">{{away_team.get_name()}}</label> 
+     <input type='int' id='away_team_score' name='away_team_score'>
+
+
+
+    <input type='submit' value='save'>
+</form>
+put a bunch of inputs here to record match events to update player statistics.....
+</div>
+
+{% endblock content %}

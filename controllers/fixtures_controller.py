@@ -44,3 +44,20 @@ def save_fixture(league_id, season_id):
     season = season_repo.select(season_id)
     fixture_repo.save(Fixture(home_team, away_team, season))
     return redirect('/admin/fixtures/'+league_id+'/'+season_id)
+
+
+@fixture_blueprint.route('/admin/fixtures/<league_id>/<season_id>/<fixture_id>')
+def record_score(league_id, season_id, fixture_id):
+    fixture = fixture_repo.select(fixture_id)
+    return render_template('fixtures/admin/record_score.html',
+                           home_team=fixture.home_team,
+                           away_team=fixture.away_team,
+                           league_id=league_id, season_id=season_id, fixture_id=fixture_id)
+    
+    
+@fixture_blueprint.route('/admin/fixtures/<league_id>/<season_id>/<fixture_id>', methods=['POST'])
+def save_score(league_id, season_id, fixture_id):
+    fixture = fixture_repo.select(fixture_id)
+    fixture.set_score(int(request.form['home_team_score']), int(request.form['away_team_score']))
+    fixture_repo.update(fixture)
+    return redirect('/admin/fixtures/'+league_id+'/'+season_id)

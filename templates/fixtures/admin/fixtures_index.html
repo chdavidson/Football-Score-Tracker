@@ -24,6 +24,9 @@
                     <td>TBC</td>
                 {% endif %}
                 <td>{{fixture.away_team.get_name()}}</td>
+                {% if fixture.away_score == None %}
+                    <td><a href="/admin/fixtures/{{league.get_id()}}/{{season.get_id()}}/{{fixture.id}}"<button>Record score</button></a><td>
+                {% endif %}
             </tr>
             {% endfor %}
         </table>

@@ -18,10 +18,15 @@ def select(id):
     result = run_sql(sql, [id])[0]
     fixture = Fixture(team_repo.select(result['home_id']),
                       team_repo.select(result['away_id']),
-                      season_repo.select(result['season_id']))
+                      season_repo.select(result['season_id']),
+                      result['id'])
     fixture.set_score(result['home_score'], result['away_score'])
     return fixture
 
 
-# def select_all():
-#     sql = 'SELECT * FROM fixtures'
+def update(fixture):
+    # sql = 'UPDATE fixtures SET (home_id, away_id, season_id, home_score, away_score) = (%s, %s, %s, %s, %s) WHERE id = %s'
+    # values = [fixture.home_team.get_id(), fixture.away_team.get_id(), fixture.season.get_id(), fixture.home_score, fixture.away_score, fixture.id]
+    sql = 'UPDATE fixtures SET (home_score, away_score) = (%s, %s) WHERE id = %s'
+    values = [fixture.home_score, fixture.away_score, fixture.id]
+    run_sql(sql, values)
