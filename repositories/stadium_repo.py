@@ -16,3 +16,13 @@ def select(id):
     return Stadium(result['name'], result['location'],
                    result['capacity'], result['id'])
 
+
+def select_all():
+    stadiums = []
+    sql = 'SELECT * FROM stadiums'
+    results = run_sql(sql)
+    for result in results:
+        stadiums.append(Stadium(result['name'], result['location'],
+                                result['capacity'], result['id']))
+    return stadiums
+

@@ -26,3 +26,10 @@ def select(id):
     result = run_sql(sql, [id])[0]
     return Team(result['name'], result['year_founded'],
                 stadium_repo.select(result['stadium_id']), result['id'])
+   
+
+def update(team):
+    sql = 'UPDATE teams SET (name, year_founded, stadium_id) = (%s, %s, %s) WHERE id = %s'
+    values = [team.get_name(), team.get_founding_year(),
+              team.get_stadium().get_id(), team.get_id()]
+    run_sql(sql, values)

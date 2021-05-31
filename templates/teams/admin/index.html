@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Team Management:</h2>
+
+    <form action="/admin/teams/edit/"> 
+        <select name='teams' id='teams'>
+            <option placeholder> - please select a team - </option>
+            {% for team in teams %}
+                <option value="{{team.get_id()}}">{{team.get_name()}}</option>
+            {% endfor %}
+        </select>
+        <input type='submit' value='edit'>
+    </form>
+    <a href='/admin/teams/new'>
+        <button>Add New</button>
+    </a>
+
+
+
+{% endblock content %}

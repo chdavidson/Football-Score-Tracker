@@ -25,3 +25,4 @@ class Stadium:
     
     def get_id(self):
         return self.__id__
+
