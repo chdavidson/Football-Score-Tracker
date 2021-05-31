@@ -11,9 +11,9 @@
         <select name='stadium' id='stadium'>
             {%for stadium in stadiums%}
                 {% if stadium.get_id() == team.get_stadium().get_id() %}
-                    <option name="{{stadium.get_id()}}" id="{{stadium.get_id()}}" selected>{{stadium.get_name()}}</option>
+                    <option name="{{stadium.get_id()}}" id="{{stadium.get_id()}}" value="{{stadium.get_id()}}" selected>{{stadium.get_name()}}</option>
                 {%else%}
-                    <option name={{stadium.get_id()}} id="{{stadium.get_id()}}">{{stadium.get_name()}}</option>
+                    <option name={{stadium.get_id()}} id="{{stadium.get_id()}}" value="{{stadium.get_id()}}">{{stadium.get_name()}}</option>
                 {% endif %}
             {% endfor %}
         <input type='submit'>

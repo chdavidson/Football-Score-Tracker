@@ -37,5 +37,7 @@ def update_team(id):
     name = request.form['name']
     year = request.form['year']
     stadium = request.form['stadium']
+    print('*******************************************')
+    print(name, year, stadium)
     team_repo.update(Team(name, year, stadium_repo.select(stadium), id))
     return redirect('/admin/teams')
