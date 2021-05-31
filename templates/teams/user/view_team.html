@@ -2,30 +2,34 @@
 {% block content %}
     <h2>{{team.get_name()}}</h2>
     <div class='fixture_container'>
-        <table class='table_of_fixtures'>
-            <tr>
-                <th>Home</th>
-                <th></th>
-                <th></th>
-                <th>Away</th>
-            </tr>
-            {% for fixture in fixtures %}
-            <tr>
-                <td>{{fixture.home_team.get_name()}}</td>
-                {% if fixture.home_score != None %}
-                    <td>{{fixture.home_score}}</td>
-                {% else %}
-                    <td>TBC</td>
-                {% endif %}
-                {% if fixture.away_score != None %}
-                    <td>{{ fixture.away_score }}</td>
-                {% else %}
-                    <td>TBC</td>
-                {% endif %}
-                <td>{{fixture.away_team.get_name()}}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        {% if fixtures|length > 0 %}
+            <table class='table_of_fixtures'>
+                <tr>
+                    <th>Home</th>
+                    <th></th>
+                    <th></th>
+                    <th>Away</th>
+                </tr>
+                {% for fixture in fixtures %}
+                <tr>
+                    <td>{{fixture.home_team.get_name()}}</td>
+                    {% if fixture.home_score != None %}
+                        <td>{{fixture.home_score}}</td>
+                    {% else %}
+                        <td>TBC</td>
+                    {% endif %}
+                    {% if fixture.away_score != None %}
+                        <td>{{ fixture.away_score }}</td>
+                    {% else %}
+                        <td>TBC</td>
+                    {% endif %}
+                    <td>{{fixture.away_team.get_name()}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>There are currently no scheduled fixtures</p>
+        {% endif %}
     </div>
 {% endblock content %}
 
