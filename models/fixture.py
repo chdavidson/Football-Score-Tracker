@@ -1,8 +1,4 @@
 class Fixture():
-    # home_team = None
-    # away_team = None
-    # id = None
-    # season = None
 
     def __init__(self, home_team, away_team, season, id=None):
         self.home_team = home_team

@@ -15,6 +15,11 @@
                 <option name="{{stadium.get_id()}}" id="{{stadium.get_id()}}" value="{{stadium.get_id()}}">{{stadium.get_name()}}</option>
             {% endfor %}
         </select>
+        <select name='league' id='league'>
+            {% for league in leagues %}
+                <option name="{{league.get_id()}}" id="{{league.get_id()}}" value="{{league.get_id()}}">{{league.get_name()}}</option>
+            {% endfor %}
+        </select>
         <input type='submit'>
     </div>
 </form>

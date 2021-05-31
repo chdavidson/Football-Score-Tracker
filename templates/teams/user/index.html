@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2> Teams: </h2>
+
+<div class='team_list_container'>
+    <ul>
+    {% for team in teams %}
+
+        <a href='/teams/{{team.get_id()}}'><li>{{team.get_name()}}</li></a>
+
+    {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}

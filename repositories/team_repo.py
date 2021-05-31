@@ -1,6 +1,8 @@
 from db.run_sql import run_sql
 from models.team import Team
+from models.fixture import Fixture
 import repositories.stadium_repo as stadium_repo
+import repositories.season_repo as season_repo
 
 
 def save(team):
@@ -33,3 +35,17 @@ def update(team):
     values = [team.get_name(), team.get_founding_year(),
               team.get_stadium().get_id(), team.get_id()]
     run_sql(sql, values)
+
+
+def find_fixtures(team_id):
+    fixtures = []
+    sql = 'SELECT * FROM fixtures WHERE home_id = %s OR away_id = %s'
+    values = [team_id, team_id]
+    results = run_sql(sql, values)
+    counter = 0
+    for result in results:
+        fixtures.append(Fixture(select(result['home_id']), select(result['away_id']),
+                                season_repo.select(result['season_id']), result['id']))
+        fixtures[counter].set_score(result['home_score'], result['away_score'])
+        counter += 1
+    return fixtures
