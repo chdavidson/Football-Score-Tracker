@@ -6,6 +6,7 @@ import repositories.stadium_repo as stadium_repo
 
 teams_blueprint = Blueprint('teams', __name__)
 
+
 # ADMINISTATOR ROUTES
 @teams_blueprint.route('/admin/teams')
 def admin_teams():
@@ -29,6 +30,7 @@ def found_team():
     year = request.form['year']
     stadium = request.form['stadium']
     new_team = Team(name, year, stadium_repo.select(stadium))
+    team_repo.save(new_team)
     return redirect('/admin/teams')
 
 
@@ -37,7 +39,5 @@ def update_team(id):
     name = request.form['name']
     year = request.form['year']
     stadium = request.form['stadium']
-    print('*******************************************')
-    print(name, year, stadium)
     team_repo.update(Team(name, year, stadium_repo.select(stadium), id))
     return redirect('/admin/teams')

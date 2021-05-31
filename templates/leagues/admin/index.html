@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>League Management:</h2>
+
+<table class='admin_leagues'>
+    <tr>
+        <th>League Name</th>
+        <th></th>
+        <th>Association</th>
+    </tr>
+    <hr>
+    {% for league in leagues %}
+        <tr>
+            <td><a href='/admin/leagues/{{league.get_id()}}'>{{league.get_name()}}</a></td>
+            <td></td>
+            <td>{{league.get_association().get_name()}}</td>
+        </tr>    
+    {% endfor %}
+
+</table>
+
+{% endblock %}

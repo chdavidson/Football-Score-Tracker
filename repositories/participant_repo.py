@@ -22,3 +22,9 @@ def select(id):
 def delete(id):
     sql = "DELETE FROM participants WHERE id = %s"
     run_sql(sql, [id])
+
+
+def delete_team_from_league(league_id, team_id):
+    sql = "SELECT * FROM participants WHERE league_id = %s AND team_id = %s"
+    result = run_sql(sql, [league_id, team_id])
+    delete(result[0]['id'])
