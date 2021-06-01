@@ -1,0 +1,36 @@
+body {
+    background-color: #ECECEC;
+    border: 0px;
+}
+
+.flex_container{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.menu_container {
+    flex-basis: 10rem;
+    flex-grow: 1;
+    height: 100vh;
+
+
+
+    color: #1EAe98;
+    background-color: #6E6D6D;
+}
+
+.menu_container > nav > ul > a:visited {
+    color: #1EAe98;
+
+
+}
+
+.main_container {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

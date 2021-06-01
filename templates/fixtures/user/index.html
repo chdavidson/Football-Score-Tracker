@@ -2,20 +2,21 @@
 
 {% block content %}
 
-{% for fixture in fixtures  %}
-
+<h2>Upcoming Fixtures</h2>
 <table class='upcoming_fixtures'>
     <tr>
         <th>Home Team</th>
         <th></th>
         <th>Away Team</th>
     </tr>
-    </tr>
-        <td>{{fixture.home_team.name}}</td>
-        <td>vs</td> 
-        <td>{{fixture.away_team.name}}</td>
+    {% for fixture in fixtures  %}
+        <tr>
+            <td>{{fixture.home_team.name}}</td>
+            <td>vs</td> 
+            <td>{{fixture.away_team.name}}</td>
+        </tr>
+    {% endfor %}
 </table>
-{% endfor %}
 
 {% endblock content %}
 

@@ -4,29 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Fitba</title>
 </head>
 <body>
-    <nav class='menu'>
-        <h2>Menu</h2>
-        <ul class='user'>
-            <a href='/teams'><li>Teams</li></a>
-            <a href='/leagues'><li>Leagues</li></a>
-            <li>Player Database</li>
-            <a href='/upcoming'><li>Upcoming Fixtures</li></a>
-            <li>Recent Signings</li>
-        </ul>
-        <h2>Admin</h2>
-        <ul class='admin'>
-            <a href='/admin/teams'><li>Team Management</li></a>
-            <a href='/admin/fixtures'><li>Fixture Management</li></a>
-            <a href='/admin/leagues'><li>League Management</li></a>
-            <li>Player Mangement</li>
-        </ul>
-    </nav>
-    <div class='main_container'>
-        {% block content %}
-        {% endblock content %}
+    <div class='flex_container'>
+        <div class='menu_container'>
+            <nav class='menu'>
+                <h2>Menu</h2>
+                <ul class='user'>
+                    <a href='/'><li>Home</li></a>
+                    <a href='/teams'><li>Teams</li></a>
+                    <a href='/leagues'><li>Leagues</li></a>
+                    <li>Player Database</li>
+                    <a href='/upcoming'><li>Upcoming Fixtures</li></a>
+                    <li>Recent Signings</li>
+                </ul>
+                <h2>Admin</h2>
+                <ul class='admin'>
+                    <a href='/admin/teams'><li>Team Management</li></a>
+                    <a href='/admin/fixtures'><li>Fixture Management</li></a>
+                    <a href='/admin/leagues'><li>League Management</li></a>
+                    <li>Player Mangement</li>
+                </ul>
+            </nav>
+        </div>
+        <div class='main_container'>
+            {% block content %}
+            {% endblock content %}
+        </div>
     </div>
 </body>
 </html>
