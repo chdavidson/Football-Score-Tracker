@@ -1,20 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>Team Management:</h2>
-
-    <form action="/admin/teams/edit/"> 
-        <select name='teams' id='teams'>
-            <option placeholder> - please select a team - </option>
-            {% for team in teams %}
-                <option value="{{team.id}}">{{team.name}}</option>
-            {% endfor %}
-        </select>
-        <input type='submit' value='edit'>
-    </form>
-    <a href='/admin/teams/new'>
-        <button>Add New</button>
-    </a>
-
-
-
+    <div class='team_grid_flex_container'>
+        {% for team in teams %}
+        <div class='team_management_grid'>
+            <a href='/admin/teams/edit/{{team.id}}'>
+                <img src="{{url_for('static', filename='badge.png')}}" height=50px width=50px/>
+                <h4>{{team.name}}</h4>
+                <p>{{team.year_founded}}</P>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock content %}

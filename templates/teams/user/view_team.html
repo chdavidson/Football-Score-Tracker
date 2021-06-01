@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class='team_overview_container'>
     <h2>{{team.name}}</h2>
     <div class='fixture_container'>
         {% if fixtures|length > 0 %}
@@ -31,6 +32,7 @@
             <p>There are currently no scheduled fixtures</p>
         {% endif %}
     </div>
+</div>
 {% endblock content %}
 
 

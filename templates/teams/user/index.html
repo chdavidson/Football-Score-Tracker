@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2> Teams: </h2>
+<div class='user_team_view'>
+    <h2>Teams: </h2>
 
-<div class='team_list_container'>
-    <ul>
-    {% for team in teams %}
+    <div class='team_list_container'>
+        <ul>
+        {% for team in teams %}
 
-        <a href='/teams/{{team.id}}'><li>{{team.name}}</li></a>
+            <a href='/teams/{{team.id}}'><li>{{team.name}}</li></a>
 
-    {% endfor %}
-    </ul>
-</div>
+        {% endfor %}
+        </ul>
+    </div>
+<div>
 
 {% endblock content %}
