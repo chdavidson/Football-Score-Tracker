@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>{{league.get_name()}} : {{season.get_year()}}</h2>
+<h2>{{league.name}} : {{season.year}}</h2>
     <div class='fixture_container'>
         <table class='table_of_fixtures'>
             <tr>
@@ -12,7 +12,7 @@
             </tr>
             {% for fixture in fixtures %}
             <tr>
-                <td>{{fixture.home_team.get_name()}}</td>
+                <td>{{fixture.home_team.name()}}</td>
                 {% if fixture.home_score != None %}
                     <td>{{fixture.home_score}}</td>
                 {% else %}
@@ -23,16 +23,16 @@
                 {% else %}
                     <td>TBC</td>
                 {% endif %}
-                <td>{{fixture.away_team.get_name()}}</td>
+                <td>{{fixture.away_team.name()}}</td>
                 {% if fixture.away_score == None %}
-                    <td><a href="/admin/fixtures/{{league.get_id()}}/{{season.get_id()}}/{{fixture.id}}"<button>Record score</button></a><td>
+                    <td><a href="/admin/fixtures/{{league.id}}/{{season.id}}/{{fixture.id}}"<button>Record score</button></a><td>
                 {% endif %}
             </tr>
             {% endfor %}
         </table>
     </div>
     <div class='new_fixture_button'>
-        <a href='/admin/fixtures/{{league.get_id()}}/{{season.get_id()}}/new'>
+        <a href='/admin/fixtures/{{league.id}}/{{season.id}}/new'>
             <input type='button' value='Add new'>
         </a>
     </div>

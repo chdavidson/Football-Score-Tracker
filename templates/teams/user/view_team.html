@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>{{team.get_name()}}</h2>
+    <h2>{{team.name}}</h2>
     <div class='fixture_container'>
         {% if fixtures|length > 0 %}
             <table class='table_of_fixtures'>
@@ -12,7 +12,7 @@
                 </tr>
                 {% for fixture in fixtures %}
                 <tr>
-                    <td>{{fixture.home_team.get_name()}}</td>
+                    <td>{{fixture.home_team.name}}</td>
                     {% if fixture.home_score != None %}
                         <td>{{fixture.home_score}}</td>
                     {% else %}
@@ -23,7 +23,7 @@
                     {% else %}
                         <td>TBC</td>
                     {% endif %}
-                    <td>{{fixture.away_team.get_name()}}</td>
+                    <td>{{fixture.away_team.name}}</td>
                 </tr>
                 {% endfor %}
             </table>

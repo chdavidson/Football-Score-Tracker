@@ -7,9 +7,9 @@ import repositories.stadium_repo as stadium_repo
 
 def save(league):
     sql = 'INSERT INTO leagues (name, association_id) VALUES (%s, %s) RETURNING id'
-    values = [league.get_name(), league.get_association().get_id()]
+    values = [league.name, league.association.id]
     results = run_sql(sql, values)
-    league.set_id(results[0]['id'])
+    league.id = results[0]['id']
 
 
 def select_all():
@@ -34,7 +34,7 @@ def select(id):
 def select_by_association(association):
     leagues = []
     sql = 'SELECT * FROM leagues WHERE association_id = %s'
-    results = run_sql(sql, [association.get_id()])
+    results = run_sql(sql, [association.id])
     for result in results:
         leagues.append(League(result['name'], result['association_id'],
                               result['id']))

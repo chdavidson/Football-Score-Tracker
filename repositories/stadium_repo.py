@@ -4,8 +4,8 @@ from models.stadium import Stadium
 
 def save(stadium):
     sql = 'INSERT INTO stadiums (name, location, capacity) VALUES (%s, %s, %s) RETURNING id'
-    values = [stadium.get_name(), stadium.get_location(),
-              stadium.get_capacity()]
+    values = [stadium.name, stadium.location,
+              stadium.capacity]
     results = run_sql(sql, values)
     stadium.set_id(results[0]['id'])
 

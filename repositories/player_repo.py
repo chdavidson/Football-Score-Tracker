@@ -6,13 +6,13 @@ import repositories.stadium_repo as stadium_repo
 
 def save(player):
     sql = 'INSERT INTO players (surname, first_name, squad_number, position, goals, assists, own_goals, yellow_cards, red_cards, clean_sheets) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id'
-    values = [player.get_surname(), player.get_firstname(),
-              player.get_squad_number(), player.get_position(),
-              player.get_goals_scored(), player.get_assists(),
-              player.get_own_goals(), player.get_yellow_cards(),
-              player.get_red_cards(), player.get_clean_sheets()]
+    values = [player.surname, player.first_name,
+              player.squad_number, player.position,
+              player.goals, player.assists,
+              player.own_goals, player.y_cards,
+              player.r_cards, player.clean_sheets]
     results = run_sql(sql, values)
-    player.set_id(results[0]['id'])
+    player.id = results[0]['id']
 
 
 def select_all():
@@ -45,7 +45,7 @@ def select(id):
 def get_teams(player):
     teams = []
     sql = 'SELECT teams.* FROM teams INNER JOIN signings ON signings.team_id = teams.id WHERE signings.player_id = %s'
-    results = run_sql(sql, [player.get_id()])
+    results = run_sql(sql, [player.id])
     for result in results:
         teams.append(Team(result['name'], result['year_founded'],
                           stadium_repo.select(result['stadium_id']), result['id']))
@@ -54,10 +54,10 @@ def get_teams(player):
 
 def update(player):
     sql = 'UPDATE players SET (surname, first_name, squad_number, position, goals, assists, own_goals, yellow_cards, red_cards, clean_sheets) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s'
-    values = [player.get_surname(), player.get_firstname(),
-              player.get_squad_number(), player.get_position(),
-              player.get_goals_scored(), player.get_assists(),
-              player.get_own_goals(), player.get_yellow_cards(),
-              player.get_red_cards(), player.get_clean_sheets(),
-              player.get_id()]
+    values = [player.surname, player.first_name,
+              player.squad_number, player.postion,
+              player.goals_scored, player.assists,
+              player.own_goals, player.y_cards,
+              player.r_cards, player.clean_sheets,
+              player.id]
     run_sql(sql, values)

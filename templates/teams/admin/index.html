@@ -6,7 +6,7 @@
         <select name='teams' id='teams'>
             <option placeholder> - please select a team - </option>
             {% for team in teams %}
-                <option value="{{team.get_id()}}">{{team.get_name()}}</option>
+                <option value="{{team.id}}">{{team.name}}</option>
             {% endfor %}
         </select>
         <input type='submit' value='edit'>

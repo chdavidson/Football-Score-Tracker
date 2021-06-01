@@ -9,7 +9,7 @@
             </tr>
             {% for league in leagues %}
             <tr>
-                <th><a href='/admin/fixtures/{{league.get_id()}}'>{{league.get_name()}}</a></th>
+                <th><a href='/admin/fixtures/{{league.id}}'>{{league.name}}</a></th>
             </tr>
             {% endfor %}
         </table>

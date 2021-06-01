@@ -3,17 +3,17 @@
 {% block content %}
 <div class='edit_team'>
     <h2>Edit Team</h2>
-    <form action="/admin/teams/{{team.get_id()}}" method='POST'>
+    <form action="/admin/teams/{{team.id}}" method='POST'>
         <label for='name'>Name:</label>
-        <input type='text' id='name' name='name' value="{{team.get_name()}}">
+        <input type='text' id='name' name='name' value="{{team.name}}">
         <label for='year'>Year Founded:</label>
-        <input type='number' id='year' name='year' min='1800' max ='2021' value="{{team.get_founding_year()}}">
+        <input type='number' id='year' name='year' min='1800' max ='2021' value="{{team.year_founded}}">
         <select name='stadium' id='stadium'>
             {%for stadium in stadiums%}
-                {% if stadium.get_id() == team.get_stadium().get_id() %}
-                    <option name="{{stadium.get_id()}}" id="{{stadium.get_id()}}" value="{{stadium.get_id()}}" selected>{{stadium.get_name()}}</option>
+                {% if stadium.id == team.stadium.id %}
+                    <option name="{{stadium.id}}" id="{{stadium.id}}" value="{{stadium.id}}" selected>{{stadium.name}}</option>
                 {%else%}
-                    <option name={{stadium.get_id()}} id="{{stadium.get_id()}}" value="{{stadium.get_id()}}">{{stadium.get_name()}}</option>
+                    <option name={{stadium.id}} id="{{stadium.id}}" value="{{stadium.id}}">{{stadium.name}}</option>
                 {% endif %}
             {% endfor %}
         <input type='submit'>

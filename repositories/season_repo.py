@@ -7,9 +7,9 @@ from models.season import Season
 
 def save(season):
     sql = 'INSERT INTO seasons (year, league_id) VALUES (%s, %s) RETURNING id'
-    values = [season.get_year(), season.get_league().get_id()]
+    values = [season.year, season.league.id]
     result = run_sql(sql, values)
-    season.set_id(result[0]['id'])
+    season.id = (result[0]['id'])
 
 
 def select(id):
@@ -33,7 +33,7 @@ def select_by_league(id):
 def get_all_fixtures(season):
     fixtures = []
     sql = 'SELECT * FROM fixtures WHERE season_id = %s'
-    results = run_sql(sql, [season.get_id()])
+    results = run_sql(sql, [season.id])
     counter = 0
     for result in results:
         fixtures.append(Fixture(team_repo.select(result['home_id']),

@@ -6,9 +6,9 @@ import repositories.league_repo as league_repo
 
 def save(participant):
     sql = 'INSERT INTO participants (league_id, team_id) VALUES (%s, %s) RETURNING id'
-    values = [participant.get_league().get_id(), participant.get_team().get_id()]
+    values = [participant.league.id, participant.team.id]
     result = run_sql(sql, values)
-    participant.set_id(result[0]['id'])
+    participant.id = result[0]['id']
 
 
 def select(id):

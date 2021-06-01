@@ -12,12 +12,12 @@
         <label for='stadium'>Stadium:</label>
         <select name='stadium' id='stadium'>
             {% for stadium in stadiums %}
-                <option name="{{stadium.get_id()}}" id="{{stadium.get_id()}}" value="{{stadium.get_id()}}">{{stadium.get_name()}}</option>
+                <option name="{{stadium.id}}" id="{{stadium.id}}" value="{{stadium.id}}">{{stadium.name}}</option>
             {% endfor %}
         </select>
         <select name='league' id='league'>
             {% for league in leagues %}
-                <option name="{{league.get_id()}}" id="{{league.get_id()}}" value="{{league.get_id()}}">{{league.get_name()}}</option>
+                <option name="{{league.id}}" id="{{league.id}}" value="{{league.id}}">{{league.name}}</option>
             {% endfor %}
         </select>
         <input type='submit'>

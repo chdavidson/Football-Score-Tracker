@@ -12,9 +12,9 @@
     <hr>
     {% for league in leagues %}
         <tr>
-            <td><a href='/admin/leagues/{{league.get_id()}}'>{{league.get_name()}}</a></td>
+            <td><a href='/admin/leagues/{{league.id}}'>{{league.name}}</a></td>
             <td></td>
-            <td>{{league.get_association().get_name()}}</td>
+            <td>{{league.association.name}}</td>
         </tr>    
     {% endfor %}
 

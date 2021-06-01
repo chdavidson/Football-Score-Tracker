@@ -7,10 +7,10 @@ import repositories.season_repo as season_repo
 
 def save(team):
     sql = 'INSERT INTO teams (name, year_founded, stadium_id) VALUES (%s, %s, %s) RETURNING id'
-    values = [team.get_name(), team.get_founding_year(),
-              team.get_stadium().get_id()]
+    values = [team.name, team.year_founded,
+              team.stadium.id]
     results = run_sql(sql, values)
-    team.set_id(results[0]['id'])
+    team.id = results[0]['id']
 
 
 def select_all():
@@ -32,8 +32,8 @@ def select(id):
 
 def update(team):
     sql = 'UPDATE teams SET (name, year_founded, stadium_id) = (%s, %s, %s) WHERE id = %s'
-    values = [team.get_name(), team.get_founding_year(),
-              team.get_stadium().get_id(), team.get_id()]
+    values = [team.name, team.year_founded,
+              team.stadium.id, team.id]
     run_sql(sql, values)
 
 

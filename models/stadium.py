@@ -1,28 +1,9 @@
 class Stadium:
 
-    __name__ = None
-    __location__ = None
-    __capacity__ = None
-    __id__ = None
-
     def __init__(self, name, location, capacity, id=None):
-        self.__name__ = name
-        self.__location__ = location
-        self.__capacity__ = capacity
-        self.__id__ = id
+        self.name = name
+        self.location = location
+        self.capacity = capacity
+        self.id = id
 
-    def get_name(self):
-        return self.__name__
-    
-    def get_location(self):
-        return self.__location__
-    
-    def get_capacity(self):
-        return self.__capacity__
-    
-    def set_id(self, id):
-        self.__id__ = id
-    
-    def get_id(self):
-        return self.__id__
 

@@ -3,17 +3,17 @@
 {% block content %}
     <h2>Add new fixture</h2>
     <div class='add_fixture_form'>
-        <form action="/admin/fixtures/{{league.get_id()}}/{{season.get_id()}}" method='POST'>
+        <form action="/admin/fixtures/{{league.id}}/{{season.id}}" method='POST'>
             <label for="home_team">Home: </label>
             <select name="home_team" id="home_team">
                 {% for participant in participants %}
-                    <option name='home_team' id='home_team' value={{participant.get_id()}}>{{participant.get_name()}}</option>
+                    <option name='home_team' id='home_team' value={{participant.id}}>{{participant.name}}</option>
                 {% endfor %}
             </select>
             <label for="away_team">Away: </label>
             <select name="away_team" id="away_team">
                 {% for participant in participants %}
-                    <option name='away_team' id='away_team' value={{participant.get_id()}}>{{participant.get_name()}}</option>
+                    <option name='away_team' id='away_team' value={{participant.id}}>{{participant.name}}</option>
                 {% endfor %}
             </select>
             <input type='submit' value='save'>

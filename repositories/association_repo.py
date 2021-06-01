@@ -5,8 +5,8 @@ import repositories.association_repo as association_repo
 
 def save(association):
     sql = 'INSERT INTO associations (name) VALUES (%s) RETURNING id'
-    results = run_sql(sql, [association.get_name()])
-    association.set_id(results[0]['id'])
+    results = run_sql(sql, [association.name])
+    association.id = results[0]['id']
 
 
 def select_all():
@@ -28,4 +28,4 @@ def select(id):
 
 def get_leagues(association):
     sql = 'SELECT * FROM leagues WHERE association_id = %s'
-    return run_sql(sql, association.get_id())
+    return run_sql(sql, association.id)

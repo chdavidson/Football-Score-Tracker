@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>{{league.get_name()}}</h2>
+<h2>{{league.name}}</h2>
     <div class='season_container'>
         <table class='table_of_seasons'>
             <tr>
@@ -9,7 +9,7 @@
             </tr>
             {% for season in seasons %}
             <tr>
-                <th><a href='/admin/fixtures/{{league.get_id()}}/{{season.get_id()}}'>{{season.get_year()}}</a></th>
+                <th><a href='/admin/fixtures/{{league.id}}/{{season.id}}'>{{season.year}}</a></th>
             </tr>
             {% endfor %}
         </table>

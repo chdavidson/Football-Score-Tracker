@@ -2,15 +2,15 @@
 
 {% block content %}
 
-<h2>{{league.get_name()}}</h2>
+<h2>{{league.name}}</h2>
 <table classs='league_participants'>
     <tr>
         <th>Squad Name</th>
     </tr>
     {% for team in teams %}
     <tr>
-        <td>{{team.get_name()}}</td>
-        <td><a href='/admin/leagues/{{league.get_id()}}/remove/{{team.get_id()}}'>remove team</a></td>
+        <td>{{team.name}}</td>
+        <td><a href='/admin/leagues/{{league.id}}/remove/{{team.id}}'>remove team</a></td>
     </tr>
     {% endfor %}
 </table>
