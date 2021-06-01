@@ -54,7 +54,7 @@ def user_league_summary(league_id, season_id):
     for t in table:
         print(t)
     
-    # league_table = sorted(league_table, key=itemgetter('points'))
+    table = sorted(table, key=itemgetter('points'), reverse=True)
     return render_template('leagues/user/league_table.html',
                            table=table,
                            season=season_repo.select(season_id),
