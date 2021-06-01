@@ -29,3 +29,14 @@ def update(fixture):
     values = [fixture.home_score, fixture.away_score, fixture.id]
     run_sql(sql, values)
 
+
+def select_all_upcoming_fixtures():
+    fixtures = []
+    results = run_sql('SELECT * FROM fixtures WHERE home_score IS NULL')
+    for result in results:
+        fixtures.append(Fixture(team_repo.select(result['home_id']),
+                                team_repo.select(result['away_id']),
+                                season_repo.select(result['season_id']),
+                                result['id']))
+    return fixtures
+

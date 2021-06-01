@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for fixture in fixtures  %}
+
+<table class='upcoming_fixtures'>
+    <tr>
+        <th>Home Team</th>
+        <th></th>
+        <th>Away Team</th>
+    </tr>
+    </tr>
+        <td>{{fixture.home_team.get_name()}}</td>
+        <td>vs</td> 
+        <td>{{fixture.away_team.get_name()}}</td>
+</table>
+{% endfor %}
+
+
+
+{% endblock content %}
+
+
+
+
+

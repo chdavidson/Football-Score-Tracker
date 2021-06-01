@@ -24,4 +24,5 @@ def league_detail(id):
 @leagues_blueprint.route('/admin/leagues/<league_id>/remove/<team_id>')
 def remove_team_from_league(league_id, team_id):
     participant_repo.delete_team_from_league(league_id, team_id)
+    # should fixtures from this league also be removed? Probably.
     return redirect('/admin/leagues/'+league_id)

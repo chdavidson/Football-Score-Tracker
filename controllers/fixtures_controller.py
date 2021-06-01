@@ -27,7 +27,7 @@ def show_fixtures_of_season(league_id, season_id):
     return render_template('fixtures/admin/fixtures_index.html',
                            fixtures=fixtures, season=season_repo.select(season_id),
                            league=league_repo.select(league_id))
-
+ 
 
 @fixture_blueprint.route('/admin/fixtures/<league_id>/<season_id>/new')
 def create_fixture(league_id, season_id):
@@ -61,3 +61,10 @@ def save_score(league_id, season_id, fixture_id):
     fixture.set_score(int(request.form['home_team_score']), int(request.form['away_team_score']))
     fixture_repo.update(fixture)
     return redirect('/admin/fixtures/'+league_id+'/'+season_id)
+
+# USER ROUTES
+
+@fixture_blueprint.route('/upcoming')
+def user_fixtures():
+    fixtures = fixture_repo.select_all_upcoming_fixtures()
+    return render_template('fixtures/user/index.html', fixtures=fixtures)
