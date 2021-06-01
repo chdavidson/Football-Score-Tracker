@@ -5,7 +5,8 @@ class League():
         self.association = association
         self.id = id
 
-    def generate_table(self, list_of_teams, list_of_fixtures, ):    
+
+    def generate_table(list_of_teams, list_of_fixtures):    
         league_table = []
         for team in list_of_teams:
             points = 0

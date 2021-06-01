@@ -51,8 +51,6 @@ def user_league_summary(league_id, season_id):
     
     league_table = League_Table(teams, fixtures)
     table = league_table.generate_table()
-    for t in table:
-        print(t)
     
     table = sorted(table, key=itemgetter('points'), reverse=True)
     return render_template('leagues/user/league_table.html',

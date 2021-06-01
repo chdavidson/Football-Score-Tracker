@@ -2,9 +2,39 @@
 
 {% block content %}
     <h2>{{league.name}} : {{season.year}}</h2>
-    {% for t in table %}
-        <p> {{t}} </P
-    {% endfor %}
+    
+    <div class='league_table_container'>
+        <table class='league_table'>
+            <tr>
+                <th>Team</th>
+                <th>GP</th>
+                <th>W</th>
+                <th>D</th>
+                <th>L</th>
+                <th>GF</th>
+                <th>GA</th>
+                <th>P</th>
+            </tr>
+            {%for team in table%}
+            <tr>
+                <th>{{team["team"]}}</th>
+                <th>{{team["games_played"]}}</th>
+                <th>{{team["won"]}}</th>
+                <th>{{team["draw"]}}</th>
+                <th>{{team["lost"]}}</th>
+                <th>{{team["goals_for"]}}</th>
+                <th>{{team["goals_against"]}}</th>
+                <th>{{team["points"]}}</th>
+            </tr>
+            {% endfor %}
+    
+        </table>
+
+    
+    </div>
+    
+
+
 
 
 {% endblock content %}

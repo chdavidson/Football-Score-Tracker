@@ -8,8 +8,7 @@ class League_Table():
         self.list_of_teams = list_of_teams
         self.list_of_fixtures = list_of_fixtures
         
-        
-    def generate_table(self):    
+    def generate_table(self):
         league_table = []
         for team in self.list_of_teams:
             points = 0
