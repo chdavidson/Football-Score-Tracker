@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class='team_management_index'>
     <h2>Team Management:</h2>
+    <div class='new_team'>
+        <form action="/admin/teams/new">
+            <input type="submit" value="add team" />
+        </form>
+    </div>
     <div class='team_grid_flex_container'>
         {% for team in teams %}
         <div class='team_management_grid'>
@@ -12,4 +18,5 @@
         </div>
         {% endfor %}
     </div>
+</div>
 {% endblock content %}

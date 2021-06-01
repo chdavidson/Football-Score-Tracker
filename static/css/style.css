@@ -73,3 +73,13 @@ text-decoration: none;}
     width: 30%;
     margin-bottom: 2%;
 }
+
+.team_management_index{
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+}
+
+.new_team{
+    padding-bottom: 20px;
+}
