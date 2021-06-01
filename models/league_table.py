@@ -1,20 +1,24 @@
-class League():
+from models.team import Team
+from models.fixture import Fixture
 
-    def __init__(self, name, association, id=None):
-        self.name = name
-        self.association = association
-        self.id = id
 
-    def generate_table(self, list_of_teams, list_of_fixtures, ):    
+class League_Table():
+    
+    def __init__(self, list_of_teams, list_of_fixtures):
+        self.list_of_teams = list_of_teams
+        self.list_of_fixtures = list_of_fixtures
+        
+        
+    def generate_table(self):    
         league_table = []
-        for team in list_of_teams:
+        for team in self.list_of_teams:
             points = 0
             goals_for = 0
             goals_against = 0
             games_played = 0
             won = 0
             draw = 0
-            for fixture in list_of_fixtures:
+            for fixture in self.list_of_fixtures:
                 if fixture.home_score is not None:
                     # Check home results:
                     if team.id == fixture.home_team.id:

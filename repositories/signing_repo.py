@@ -6,9 +6,9 @@ import repositories.team_repo as team_repo
 
 def save(signing):
     sql = "INSERT INTO signings (team_id, player_id, signed_on) VALUES (%s, %s, %s) RETURNING id"
-    values = [signing.team.id, signing.player.id, signing.signed_on]
+    values = [signing.team.id, signing.player.id, signing.date]
     results = run_sql(sql, values)
-    signing.set_id(results[0]['id'])
+    signing.id = (results[0]['id'])
 
 
 def select(id):

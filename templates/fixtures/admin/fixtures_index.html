@@ -12,7 +12,7 @@
             </tr>
             {% for fixture in fixtures %}
             <tr>
-                <td>{{fixture.home_team.name()}}</td>
+                <td>{{fixture.home_team.name}}</td>
                 {% if fixture.home_score != None %}
                     <td>{{fixture.home_score}}</td>
                 {% else %}
@@ -23,7 +23,7 @@
                 {% else %}
                     <td>TBC</td>
                 {% endif %}
-                <td>{{fixture.away_team.name()}}</td>
+                <td>{{fixture.away_team.name}}</td>
                 {% if fixture.away_score == None %}
                     <td><a href="/admin/fixtures/{{league.id}}/{{season.id}}/{{fixture.id}}"<button>Record score</button></a><td>
                 {% endif %}

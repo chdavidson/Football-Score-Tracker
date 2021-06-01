@@ -12,6 +12,7 @@ from models.stadium import Stadium
 from models.signing import Signing
 from models.fixture import Fixture
 from models.association import Football_Association
+from models.league_table import League_Table
 import repositories.signing_repo as signing_repo
 import repositories.player_repo as player_repo
 import repositories.team_repo as team_repo
@@ -71,7 +72,7 @@ sign_vvd_netherlands = Signing(virgil_van_dijk, netherlands)
 signing_repo.save(sign_vvd_netherlands)
 
 
-virgil_van_dijk.set_firstname('Big Virgil')
+virgil_van_dijk.first_name = 'Big Virgil'
 player_repo.update(virgil_van_dijk) # Outputs 'no results to fetch' to console but it is working..
 
 
@@ -109,3 +110,22 @@ queens_park = Team("Queen's Park F.C.", 1867, hampden)
 team_repo.save(queens_park)
 qp_sl2 = Participant(scot_league_two, queens_park)
 participant_repo.save(qp_sl2)
+
+
+test_participants = league_repo.find_participants(2)
+test_fixtures = season_repo.get_all_fixtures(season_repo.select(1))
+
+for p in test_participants:
+    print(p.name)
+print("***************")
+for f in test_fixtures:
+    print(f.home_team.name, f.home_score, f.away_score, f.away_team.name)
+
+
+test_table_obj = League_Table(test_participants, test_fixtures)
+test_table = test_table_obj.generate_table()
+print()
+print('********************************************')
+for team in test_table:
+    print(team)
+print('********************************************')

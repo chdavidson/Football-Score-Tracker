@@ -7,7 +7,7 @@ def save(stadium):
     values = [stadium.name, stadium.location,
               stadium.capacity]
     results = run_sql(sql, values)
-    stadium.set_id(results[0]['id'])
+    stadium.id = (results[0]['id'])
 
 
 def select(id):

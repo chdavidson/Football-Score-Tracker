@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Seasons:</h2>
+
+<ul class='list_of_seasons'>
+    {% for season in seasons %}
+        <a href='/leagues/{{current_league}}/{{season.id}}'><li>{{season.year}}</li></a>
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}
+
+
+

@@ -18,7 +18,7 @@ class Player:
         self.first_name = first_name
         self.squad_number = squad_number
         self.position = position
-        self.goals_scored = goals
+        self.goals = goals
         self.assists = assists
         self.own_goals = own_goals
         self.y_cards = yellow_cards

@@ -7,8 +7,8 @@ import repositories.season_repo as season_repo
 
 def save(fixture):
     sql = 'INSERT INTO fixtures (home_id, away_id, season_id, home_score, away_score) VALUES (%s, %s, %s, %s, %s) RETURNING id'
-    values = [fixture.home_team.get_id(), fixture.away_team.get_id(),
-              fixture.season.get_id(), fixture.home_score, fixture.away_score]
+    values = [fixture.home_team.id, fixture.away_team.id,
+              fixture.season.id, fixture.home_score, fixture.away_score]
     result = run_sql(sql, values)
     fixture.id = result[0]['id']
 

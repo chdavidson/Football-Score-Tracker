@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h2>Leagues</h2>
+    <ul class='list_of_leagues'>
+        {% for league in leagues %}
+            <a href='/leagues/{{league.id}}'><li>{{league.name}}</li></a>
+        {% endfor %}
+    </ul>
+{% endblock content %}

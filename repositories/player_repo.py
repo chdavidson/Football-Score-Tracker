@@ -55,8 +55,8 @@ def get_teams(player):
 def update(player):
     sql = 'UPDATE players SET (surname, first_name, squad_number, position, goals, assists, own_goals, yellow_cards, red_cards, clean_sheets) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s'
     values = [player.surname, player.first_name,
-              player.squad_number, player.postion,
-              player.goals_scored, player.assists,
+              player.squad_number, player.position,
+              player.goals, player.assists,
               player.own_goals, player.y_cards,
               player.r_cards, player.clean_sheets,
               player.id]
