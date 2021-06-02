@@ -39,7 +39,7 @@ player_repo.save(andrew_ryan)
 sign_ar_stirlingalbion = Signing(andrew_ryan, stirling_albion)
 signing_repo.save(sign_ar_stirlingalbion)
 
-blair_currie = Player('Blair', 'Currie', 1, 'GK')
+blair_currie = Player('Currie', 'Blair', 1, 'GK')
 player_repo.save(blair_currie)
 sign_bc_stirlingalbion = Signing(blair_currie, stirling_albion)
 signing_repo.save(sign_bc_stirlingalbion)

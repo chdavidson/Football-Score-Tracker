@@ -108,3 +108,37 @@ input[type=submit] {
     background-color: #1EAe98;
     color: whitesmoke;
 }
+
+
+.league_table_container{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.league_table_container > h2 {
+
+    padding-bottom: 100px;
+}
+
+.league_table{
+    border:1px solid #6E6D6D;
+}
+
+th {
+    background-color: #1EAe98;
+    text-align: left;
+    color: #ececec;
+    border-spacing: 0px;
+    padding: 0px
+}
+
+.league_index {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.league_index > h2 {
+    padding-bottom: 100px;
+}
