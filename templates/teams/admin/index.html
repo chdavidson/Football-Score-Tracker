@@ -7,11 +7,13 @@
             <input type="submit" value="add team" />
         </form>
     </div>
+
     <div class='team_grid_flex_container'>
         {% for team in teams %}
-        <div class='team_management_grid'>
-            <a href='/admin/teams/edit/{{team.id}}'>
-                <img src="{{url_for('static', filename='badge.png')}}" height=50px width=50px/>
+            <div class='team_management_grid'>
+            <a href='/admin/teams/edit/{{team.id}}' class='team_link'>
+            
+                <img class='team_badge'src="{{url_for('static', filename='badge.png')}}" height=50px width=50px/>
                 <h4>{{team.name}}</h4>
                 <p>{{team.year_founded}}</P>
             </a>

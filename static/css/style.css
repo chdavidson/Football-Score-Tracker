@@ -1,6 +1,7 @@
 body {
     background-color: #ECECEC;
     border: 0px;
+    margin: 0px;
 }
 
 .flex_container{
@@ -82,4 +83,28 @@ text-decoration: none;}
 
 .new_team{
     padding-bottom: 20px;
+}
+
+.team_badge{
+    padding-right: 235px;
+}
+
+.team_link {
+    background-color: transparent;
+    height: 300px;
+    width: 350px;
+    align-items:flex-start;
+    z-index: -1;
+}
+
+.team_management_grid {
+    z-index: 1;
+    border-style:outset;
+    border-color: #1EAe98;
+   
+}
+
+input[type=submit] {
+    background-color: #1EAe98;
+    color: whitesmoke;
 }
