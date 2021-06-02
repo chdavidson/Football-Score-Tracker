@@ -2,10 +2,8 @@ from os import PathLike
 from models.season import Season
 from models.participant import Participant
 import pdb
-from models import player
-from models import stadium
 from models import team
-from models.player import Player, Position
+from models.player import Player
 from models.team import Team
 from models.league import League
 from models.stadium import Stadium
@@ -30,9 +28,6 @@ scot_prem = League('Scottish Premiership', sfpl)
 league_repo.save(scot_prem)
 scot_league_two = League('Scottish League Two', sfpl)
 league_repo.save(scot_league_two)
-
-# for league in league_repo.select_by_association(sfpl):
-#     print(league.get_name())
 
 forthbank = Stadium('Forthbank Performance Sports Centre', 'Stirling', 3808)
 stadium_repo.save(forthbank)
@@ -73,7 +68,7 @@ signing_repo.save(sign_vvd_netherlands)
 
 
 virgil_van_dijk.first_name = 'Big Virgil'
-player_repo.update(virgil_van_dijk) # Outputs 'no results to fetch' to console but it is working..
+player_repo.update(virgil_van_dijk)
 
 
 san_siro = Stadium('San Siro Stadium', 'Milan', 80018)
@@ -111,21 +106,3 @@ team_repo.save(queens_park)
 qp_sl2 = Participant(scot_league_two, queens_park)
 participant_repo.save(qp_sl2)
 
-
-test_participants = league_repo.find_participants(2)
-test_fixtures = season_repo.get_all_fixtures(season_repo.select(1))
-
-for p in test_participants:
-    print(p.name)
-print("***************")
-for f in test_fixtures:
-    print(f.home_team.name, f.home_score, f.away_score, f.away_team.name)
-
-
-test_table_obj = League_Table(test_participants, test_fixtures)
-test_table = test_table_obj.generate_table()
-print()
-print('********************************************')
-for team in test_table:
-    print(team)
-print('********************************************')
