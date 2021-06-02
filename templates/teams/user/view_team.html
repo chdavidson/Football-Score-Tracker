@@ -3,6 +3,7 @@
 <div class='team_overview_container'>
     <h2>{{team.name}}</h2>
     <div class='fixture_container'>
+    <h5>Fixtures:</h5>
         {% if fixtures|length > 0 %}
             <table class='table_of_fixtures'>
                 <tr>
@@ -31,6 +32,40 @@
         {% else %}
             <p>There are currently no scheduled fixtures</p>
         {% endif %}
+    </div>
+    <div class='squad_container'>
+        {% if  players|length > 0%}
+        <h5>Squad:</h5>
+            <table class='squad_table'>
+                <tr>
+                    <th>Name</th>
+                    <th>Squad Number</th>
+                    <th>Position</th>
+                    <th>G</th>
+                    <th>A</th>
+                    <th>OG</th>
+                    <th>YC</th>
+                    <th>RC</th>
+                    <th>CS</th>
+                </tr>
+                {% for player in players %}
+                    <tr>
+                        <td>{{player.surname}}, {{player.first_name}}</td>
+                        <td>{{player.squad_number}}</td>
+                        <td>{{player.position}}</td>
+                        <td>{{player.goals}}</td>
+                        <td>{{player.assists}}</td>
+                        <td>{{player.own_goals}}</td>
+                        <td>{{player.y_cards}}</td>
+                        <td>{{player.r_cards}}</td>
+                        <td>{{player.clean_sheets}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>This team has no players</p>
+        {% endif %}
+        
     </div>
 </div>
 {% endblock content %}

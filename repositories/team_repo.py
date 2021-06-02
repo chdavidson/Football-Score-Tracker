@@ -1,6 +1,7 @@
 from db.run_sql import run_sql
 from models.team import Team
 from models.fixture import Fixture
+from models.player import Player
 import repositories.stadium_repo as stadium_repo
 import repositories.season_repo as season_repo
 
@@ -49,3 +50,17 @@ def find_fixtures(team_id):
         fixtures[counter].set_score(result['home_score'], result['away_score'])
         counter += 1
     return fixtures
+
+
+def find_players(team_id):
+    players = []
+    sql = 'SELECT players.* FROM players INNER JOIN signings ON signings.player_id = players.id WHERE team_id = %s'
+    results = run_sql(sql, [team_id])
+    for result in results:
+        players.append(Player(result['surname'], result['first_name'],
+                              result['squad_number'], result['position'],
+                              result['goals'], result['assists'],
+                              result['own_goals'], result['yellow_cards'],
+                              result['red_cards'], result['clean_sheets'],
+                              result['id']))
+    return players

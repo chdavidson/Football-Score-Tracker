@@ -59,4 +59,5 @@ def user_teams():
 def view_team(team_id):
     team = team_repo.select(team_id)
     fixtures = team_repo.find_fixtures(team_id)
-    return render_template('teams/user/view_team.html', team=team, fixtures=fixtures)
+    players = team_repo.find_players(team_id)
+    return render_template('teams/user/view_team.html', team=team, fixtures=fixtures, players=players)
